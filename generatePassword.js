@@ -1,3 +1,5 @@
+//This file is for hashing passwords
+
 const bcrypt = require("bcrypt");
 
 (async () => {

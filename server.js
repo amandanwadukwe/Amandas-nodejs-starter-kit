@@ -17,8 +17,7 @@ const usersRouter = require("./routes/users");
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 
-
-app.listen(port, () => {
+module.exports = app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 })
 

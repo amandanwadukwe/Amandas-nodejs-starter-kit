@@ -1,8 +1,25 @@
-const supertest = require('supertest') // Import supertest
-const userServer = require("./users") // Import the server object
-const requestWithSupertest = supertest(userServer) // We will use this function to mock HTTP requests
+const request = require('supertest') // Import supertest
+const authServer = require("./auth") // Import the server object
+const mainServer = require("../server")
 
-afterEach(done => { // afterEach function is provided by Jest and executes once all tests are finished
-    userServer.close() // We close the server connection once all tests have finished
+beforeAll(done => {
     done()
+})
+  
+afterAll(done => {
+    //write code to close connection to database and server connection once the test is done
+    mainServer.close()
+    done()
+})
+
+describe("Test auth route", () => {
+    it ("should return authentication token", (done) => {
+        request(authServer)
+        .post("/")
+        .expect(200)
+        .then((response) => {
+            expect(response.body.ok).toBe(true)
+        })
+        done()
+    })
 })
