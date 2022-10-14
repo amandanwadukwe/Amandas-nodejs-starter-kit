@@ -2,5 +2,5 @@
 
 This is my personal starter kit for secure nodejs servers.
 
-**Warning**    
+**warning**    
 This starter kit uses an array as a dummy database
